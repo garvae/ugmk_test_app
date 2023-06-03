@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  ugmk_test_app:
+    container_name: ugmk_test_app
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    restart: "on-failure"
+    image: ugmk_test_app
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    ports:
+      - "3000:80"
+    stdin_open: true
+    working_dir: /var/app
+    volumes:
+      - ./build:/var/app/build
+    healthcheck:
+      test: curl --fail http://localhost:80 || exit 1
+      interval: 24h
+      retries: 5
+      start_period: 20s
+      timeout: 10s

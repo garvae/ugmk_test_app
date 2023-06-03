@@ -1,0 +1,16 @@
+**/.DS_Store
+**/.git
+**/node_modules
+.git
+.gitignore
+.husky
+.idea
+.next
+.nyc_output
+_backup
+_other
+cache
+coverage
+fixture
+npm-debug.log
+temp
